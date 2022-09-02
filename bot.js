@@ -16,7 +16,6 @@ app.get('/', async(req, res) => {
 
 app.post('/', async(req, res) => {
     console.log(req.body);
-    res.sendStatus(200)
     get_res(req.body.firstSelection, req.body.secondSelection, req, res)
 });
 // color codes in order of their selection
