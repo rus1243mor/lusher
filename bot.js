@@ -11,7 +11,7 @@ app.use(bodyparser.urlencoded({ extended: true }))
 
 app.get('/', async(req, res) => {
     console.log(req.body)
-    res.sendStatus(200)
+    res.send("get it")
 });
 
 app.post('/', async(req, res) => {
