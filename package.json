@@ -4,10 +4,8 @@
     "express": "^4.18.1",
     "luscher-test": "^2.2.1"
   },
-  "type": "module",
   "scripts": {
-    "start": "node bot",
-    "install": "npm i"
+    "start": "node bot"
   },
   "engines": {
     "node": "18.x"

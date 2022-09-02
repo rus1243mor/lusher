@@ -1,7 +1,7 @@
-import pkg from 'luscher-test'
+var pkg = require ('luscher-test')
 const { TwoStageTest } = pkg
-import express from 'express'
-import bodyparser from "body-parser"
+var express = require('express')
+var bodyparser = require("body-parser")
 
 const port = process.env.PORT || 3000;
 const app = express();
