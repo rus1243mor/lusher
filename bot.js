@@ -8,7 +8,12 @@ const app = express();
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }))
-
+app.use((req,res,next)=>{
+    res.setHeader('Access-Control-Allow-Origin','*');
+    res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
+    res.setHeader('Access-Control-Allow-Methods','Content-Type','Authorization');
+    next(); 
+})
 app.get('/', async(req, res) => {
     console.log(req.body)
     res.send("get it")
@@ -19,8 +24,6 @@ app.post('/', async(req, res) => {
     get_res(req.body.firstSelection, req.body.secondSelection, req, res)
 });
 // color codes in order of their selection
-const firstSelection = [2, 5, 3, 1, 0, 6, 7, 4];
-const secondSelection = [5, 7, 3, 1, 0, 4, 2, 6];
 
 async function get_res(firstSelection, secondSelection, req, res) {
     const test = new TwoStageTest(firstSelection, secondSelection);
