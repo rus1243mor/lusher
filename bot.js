@@ -40,3 +40,5 @@ async function get_res(firstSelection, secondSelection, req, res) {
 }
 
 app.listen(port, ()=>{ console.log("Listening to the server on http://localhost:" + port)});
+
+module.exports = app;
