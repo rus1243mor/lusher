@@ -19,11 +19,32 @@ app.get('/results', async(req, res) => {
 
 app.post('/', async(req, res) => {
     console.log(req.body);
-    await get_res(req.body.firstSelection, req.body.secondSelection, req, res)
+    if(req.body.language == "en") {
+        await get_res_en(req.body.firstSelection, req.body.secondSelection, req, res)
+    }
+    else if(eq.body.language == "ru"){
+        await get_res_ru(req.body.firstSelection, req.body.secondSelection, req, res)
+    }
 });
 // color codes in order of their selection
 
-async function get_res(firstSelection, secondSelection, req, res) {
+async function get_res_ru(firstSelection, secondSelection, req, res) {
+    const test = new TwoStageTest(firstSelection, secondSelection);
+    const testInterpretation = await test.getInterpretation("multi")
+    var result = ""
+    for(var i = 0; i < testInterpretation[0].length; i++) {
+        if(typeof(testInterpretation[0][i].interpretation[0].ru) == "object") {
+            result += testInterpretation[0][i].interpretation[0].ru.physcho
+        }
+        else {
+            result += testInterpretation[0][i].interpretation[0].ru
+        }
+        result += "\n\n"
+    }
+    res.send(result)
+}
+
+async function get_res_en(firstSelection, secondSelection, req, res) {
     const test = new TwoStageTest(firstSelection, secondSelection);
     const testInterpretation = await test.getInterpretation("multi")
     var result = ""
