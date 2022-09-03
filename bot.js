@@ -8,15 +8,12 @@ const app = express();
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }))
-app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', 'https://lusher.vercel.app/results');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
-});
+
 app.get('/results', async(req, res) => {
     console.log(req.query)
-    res.send("get it")
+    res.json({
+        text: "get it"
+    })
 });
 
 app.post('/', async(req, res) => {
