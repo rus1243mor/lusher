@@ -22,7 +22,7 @@ app.post('/', async(req, res) => {
     if(req.body.language == "en") {
         await get_res_en(req.body.firstSelection, req.body.secondSelection, req, res)
     }
-    else if(eq.body.language == "ru"){
+    else {
         await get_res_ru(req.body.firstSelection, req.body.secondSelection, req, res)
     }
 });
