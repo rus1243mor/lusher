@@ -19,7 +19,7 @@ app.post('/', async(req, res) => {
     // get_res(req.body.firstSelection, req.body.secondSelection, req, res)
 });
 // color codes in order of their selection
-
+ 
 async function get_res(firstSelection, secondSelection, req, res) {
     const test = new TwoStageTest(firstSelection, secondSelection);
     const testInterpretation = await test.getInterpretation("multi")
