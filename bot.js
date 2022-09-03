@@ -19,10 +19,7 @@ app.get('/results', async(req, res) => {
 
 app.post('/', async(req, res) => {
     console.log(req.body);
-    res.json({
-        text: "get it"
-    })
-    // get_res(req.body.firstSelection, req.body.secondSelection, req, res)
+    await get_res(req.body.firstSelection, req.body.secondSelection, req, res)
 });
 // color codes in order of their selection
 
