@@ -28,11 +28,11 @@ async function get_res(firstSelection, secondSelection, req, res) {
     const testInterpretation = await test.getInterpretation("multi")
     var result = ""
     for(var i = 0; i < testInterpretation[0].length; i++) {
-        if(typeof(testInterpretation[0][i].interpretation[0].ru) == "object") {
-            result += testInterpretation[0][i].interpretation[0].ru.physcho
+        if(typeof(testInterpretation[0][i].interpretation[0].en) == "object") {
+            result += testInterpretation[0][i].interpretation[0].en.physcho
         }
         else {
-            result += testInterpretation[0][i].interpretation[0].ru
+            result += testInterpretation[0][i].interpretation[0].en
         }
         result += "\n\n"
     }
