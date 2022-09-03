@@ -8,7 +8,24 @@ const app = express();
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }))
+app.use(function (req, res, next) {
 
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8888');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
 app.get('/results', async(req, res) => {
     console.log(req.query)
     res.send("get it")
@@ -19,7 +36,7 @@ app.post('/', async(req, res) => {
     // get_res(req.body.firstSelection, req.body.secondSelection, req, res)
 });
 // color codes in order of their selection
- 
+
 async function get_res(firstSelection, secondSelection, req, res) {
     const test = new TwoStageTest(firstSelection, secondSelection);
     const testInterpretation = await test.getInterpretation("multi")
