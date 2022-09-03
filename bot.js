@@ -33,7 +33,7 @@ app.get('/', async(req, res) => {
 
 app.post('/', async(req, res) => {
     console.log(req.body);
-    get_res(req.body.firstSelection, req.body.secondSelection, req, res)
+    // get_res(req.body.firstSelection, req.body.secondSelection, req, res)
 });
 // color codes in order of their selection
 
